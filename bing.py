@@ -29,3 +29,7 @@ if imageName:
     with open(imageName + '.jpg', 'wb') as image:
         image.write(resp.content)
     print('Image Got')
+
+    #https://stackoverflow.com/questions/42119065/pyinstaller-struct-error-unpack-requires-a-bytes-object-of-length-16
+    #pyinstaller struct.error: unpack requires a bytes object of length 16
+    #ico
