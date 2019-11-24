@@ -1,5 +1,6 @@
 # bing_wall_url
 get today's bing pic and set it as wallpaper manually
+
 ico file:'https://www.easyicon.net'
 
 #need to set the dirpath
