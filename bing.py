@@ -8,6 +8,8 @@ headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/
 r = get('https://cn.bing.com', headers=headers)
 soup =BeautifulSoup(r.text, 'html.parser')
 
+#link id='bglink'
+#imageUrl = 'https://cn.bing.com/th?id=OHR.AtchafalayaCypress_ZH-CN0183179230_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp'
 link = soup.find('link')
 if link['id'] == 'bgLink':
     match = re.search(re.compile('id=(.*?)_'), link['href'])
@@ -15,9 +17,14 @@ if link['id'] == 'bgLink':
         imageName = match.group(1)
     imageUrl = 'https://cn.bing.com' + link['href']
 print(imageUrl)
-resp = get(imageUrl, headers=headers)
-targetPath = r'C:\\Users\\acer1\\Desktop'
+
+#enter may direct to the Desktop path
+targetPath = input('dir path:').strip('\u202a')
+if not targetPath:
+    targetPath = r'C:\\Users\\acer1\\Desktop'
 chdir(targetPath)
+
+resp = get(imageUrl, headers=headers)
 if imageName:
     with open(imageName + '.jpg', 'wb') as image:
         image.write(resp.content)
